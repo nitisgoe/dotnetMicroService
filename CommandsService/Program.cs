@@ -1,3 +1,8 @@
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using Microsoft.EntityFrameworkCore;
+using CommandsService.Data;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,7 +12,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMem"));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Service.AddScoped<ICommandRepo, CommandRepo>();
+builder.Services.AddScoped<ICommandRepo, CommandRepo>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
